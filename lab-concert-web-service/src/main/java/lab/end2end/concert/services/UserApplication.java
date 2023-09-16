@@ -9,13 +9,13 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @SpringBootApplication
 @EntityScan("lab.end2end.concert.domain")
-public class ConcertApplication {
+public class UserApplication {
 	public static void main(String[] args) {
-		SpringApplication.run(ConcertApplication.class, args);
+		SpringApplication.run(UserApplication.class, args);
 	}
 
 	@Bean
-	public WebMvcConfigurer corsConfigurer1() {
+	public WebMvcConfigurer corsConfigurer2() {
 		return new WebMvcConfigurer() {
 			@Override
 			public void addCorsMappings(CorsRegistry registry) {
