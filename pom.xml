@@ -1,18 +1,11 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.3.0.RELEASE</version>
-		<relativePath/> <!-- lookup parent from repository -->
-	</parent>
-	<groupId>nz.ac.auckland</groupId>
-	<artifactId>lab-3tier</artifactId>
+	<groupId>th.ac.mfu</groupId>
+	<artifactId>lab-microservice</artifactId>
 	<version>1.0</version>
 	<packaging>pom</packaging>
-	<name>lab-3tier</name>
+	<name>lab-end2end</name>
 
 	<properties>
 		<slf.version>1.7.25</slf.version>
@@ -20,28 +13,23 @@
 		<apache.commons.version>3.10</apache.commons.version>
 		<hibernate.version>5.4.20.Final</hibernate.version>
 		<h2.version>1.4.200</h2.version>
+
 		<mvn.compiler.version>3.8.0</mvn.compiler.version>
 	</properties>
-
+	
 	<modules>
-		<module>lab-concert-domain-model</module>
-		<module>lab-concert-web-service</module>
-		<module>lab-concert-web-front</module>
+		<module>eureka-naming-server</module>
+<module>user-service</module>
+<module>product-service</module>
+<module>payment</module>
+<module>order</module>
+<module>pubsub-consumer</module>
+<module>pubsub-producer</module>
+<module>web-front</module>
 	</modules>
-
+	
 	<dependencies>
-		<!-- Hibernate JPA provider. -->
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-entitymanager</artifactId>
-			<version>${hibernate.version}</version>
-		</dependency>
-		<!-- H2 embedded database. -->
-		<dependency>
-			<groupId>com.h2database</groupId>
-			<artifactId>h2</artifactId>
-			<version>${h2.version}</version>
-		</dependency>
+		
 		<!-- Apache Commons utilities -->
 		<dependency>
 			<groupId>org.apache.commons</groupId>
@@ -53,7 +41,6 @@
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>${junit.version}</version>
-			<scope>test</scope>
 		</dependency>
 		<!-- Logging. -->
 		<dependency>
