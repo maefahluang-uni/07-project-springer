@@ -1,11 +1,10 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>th.ac.mfu</groupId>
-	<artifactId>lab-microservice</artifactId>
+	<groupId>th.microservice</groupId>
+	<artifactId>simple-microservice</artifactId>
 	<version>1.0</version>
 	<packaging>pom</packaging>
-	<name>lab-end2end</name>
 
 	<properties>
 		<slf.version>1.7.25</slf.version>
@@ -20,13 +19,13 @@
 	<modules>
 		<module>eureka-naming-server</module>
 <module>user-service</module>
-<module>product-service</module>
-<module>payment</module>
-<module>order</module>
-<module>pubsub-consumer</module>
+ <module>product-service</module>
+ <module>pubsub-consumer</module>
 <module>pubsub-producer</module>
-<module>web-front</module>
-	</modules>
+ <module>web-front</module>
+ <module>payment-service</module>
+ <module>order-service</module>
+ 	</modules>
 	
 	<dependencies>
 		
@@ -53,6 +52,8 @@
 			<artifactId>slf4j-log4j12</artifactId>
 			<version>${slf.version}</version>
 		</dependency>
+
+		
 	</dependencies>
 
 	<build>
