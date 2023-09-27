@@ -36,7 +36,7 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public String register(@RequestParam String username, @RequestParam String password, Model model) {
+    public String register(@RequestParam String username, @RequestParam String password, @RequestParam String firstname,@RequestParam String lastname,@RequestParam String email,@RequestParam String phone, Model model) {
         User existingUser = userService.findByUsername(username);
         if (existingUser != null) {
             model.addAttribute("error", "Username already exists");
@@ -46,6 +46,11 @@ public class UserController {
         User newUser = new User();
         newUser.setUsername(username);
         newUser.setPassword(password);
+        newUser.setFirstname(firstname);
+        newUser.setLastname(lastname);
+        newUser.setEmail(email);
+        newUser.setPhone(phone);
+
 
         userService.saveUser(newUser);
 
