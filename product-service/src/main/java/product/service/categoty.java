@@ -13,6 +13,7 @@ public class categoty {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long ID;
+    
     private String Name;
 
 

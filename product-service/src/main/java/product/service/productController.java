@@ -88,15 +88,15 @@ public class productController {
     }
     // Delete Products
     @DeleteMapping("/products/{id}")
-    public ResponseEntity<String> deleteProduct(@PathVariable long id) {
+    public ResponseEntity<String> deleteProduct(@PathVariable long ID) {
 
         //Can't find id to delete
-        if(!productRepository.existsById(id)){
+        if(!productRepository.existsById(ID)){
             return ResponseEntity.status(HttpStatus.CONFLICT).body("Product id Deleted");
         }
 
         // delete Products
-        productRepository.deleteById(id);
+        productRepository.deleteById(ID);
 
         // return success message
         return ResponseEntity.ok("Product had Deleted");
