@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import product.service.domain.categoty;
+
 @RestController
 public class categotyController {
 
@@ -21,7 +23,7 @@ public class categotyController {
     private categotyRepository categotyRepository;
 
     // Select all categoty
-    @GetMapping("/categoty")
+    @GetMapping("/category")
     public Collection<categoty> getallcategoty() {
         return categotyRepository.findAll();
     }
@@ -34,41 +36,41 @@ public class categotyController {
         // check if id exists in db
         if (!optcategoty.isPresent()) {
             // return error message 404
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("categoty Not Found");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("category Not Found");
 
         }
         categoty emp = optcategoty.get();
         return ResponseEntity.ok(emp);
     }
     //Create method for position 
-    @PostMapping("/categoty")
-    public ResponseEntity createPosition(@RequestBody categoty categoty){
+    @PostMapping("/category")
+    public ResponseEntity createCategoty(@RequestBody categoty categoty){
         categotyRepository.save(categoty);
         return ResponseEntity.ok(categoty);
     }
 
     // update categoty
-    @PutMapping("/categoty")
+    @PutMapping("/category")
     public ResponseEntity<String> updateCategoty( @RequestBody categoty categoty) {
 
         //Can't find id to Update
         if(!categotyRepository.existsById(categoty.getId())){
-            return ResponseEntity.status(HttpStatus.CONFLICT).body("categoty id already exists");
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("category id already exists");
         }
 
         // update categoty
         categotyRepository.save(categoty);
 
         // return success message
-        return ResponseEntity.ok("categoty updated");
+        return ResponseEntity.ok("category updated");
     }
     // Delete categoty
-    @DeleteMapping("/categoty/{ID}")
+    @DeleteMapping("/category/{ID}")
     public ResponseEntity<String> deletecategoty(@PathVariable long ID) {
 
         //Can't find id to delete
         if(!categotyRepository.existsById(ID)){
-            return ResponseEntity.status(HttpStatus.CONFLICT).body("categoty id Deleted");
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("category id Deleted");
         }
 
         // delete Products

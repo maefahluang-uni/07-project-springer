@@ -1,4 +1,4 @@
-package product.service;
+package product.service.domain;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
