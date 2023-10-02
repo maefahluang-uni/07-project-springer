@@ -1,4 +1,4 @@
-package product.service;
+package product.service.productservice;
 
 import java.util.Collection;
 import java.util.Optional;

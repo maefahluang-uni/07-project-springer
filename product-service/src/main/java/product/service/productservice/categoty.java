@@ -1,5 +1,6 @@
-package product.service;
+package product.service.productservice;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -8,11 +9,15 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table(name = "categoty")
+@Table(name = "catagory")
 public class categoty {
+
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long ID;
+
+    @Column(name="name")
     private String Name;
 
 
