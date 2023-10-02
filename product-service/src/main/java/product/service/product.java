@@ -1,6 +1,7 @@
-package product.service.domain;
+package product.service;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -9,21 +10,33 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+
 @Entity
-@Table(name = "Product")
+@Table(name = "product")
 public class product {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long ID;
+
+    @Column(name="name")
     private String Name ;
+
+    @Column(name="description")
     private String Discription;
+
+    @Column(name="price")
     private long Price;
+
+    @Column(name="stock")
     private long Stock;
 
+
+    // @Column(name ="catagoty")
     @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "Categ_id", referencedColumnName = "id")
     private categoty Categoty;
 
+    @Column(name = "brand")
     private String Brand;
     //constructors 
     product(){

@@ -2,10 +2,8 @@ package product.service;
 
 import java.util.List;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-import product.service.domain.categoty;
-
-public interface categotyRepository extends CrudRepository<categoty, Long>{
-    public List<categoty> findAll();
+public interface categotyRepository extends JpaRepository<categoty, Long>{
+    // public List<categoty> findAll();
 }

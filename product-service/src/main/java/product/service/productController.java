@@ -15,15 +15,16 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import product.service.domain.product;
+
+import product.service.productRepository;
 
 @RestController
 public class productController {
 
     @Autowired
     private productRepository productRepository;
-    // // Create hashmap for Product
-    // private HashMap<Long, Product> productDB = new HashMap<Long, Product>();
+    // Create hashmap for Product
+    
 
     // Select all Product
     @GetMapping("/products")
@@ -31,7 +32,7 @@ public class productController {
         return productRepository.findAll();
     }
 
-    // Select Products By ID
+    // Select Products By ID****
     @GetMapping("/products/{id}")
     public ResponseEntity getAllProductById(@PathVariable long ID) {
         Optional<product> optProduct = productRepository.findById(ID);
@@ -46,23 +47,23 @@ public class productController {
         return ResponseEntity.ok(emp);
     }
 
-    // Select Products By ID
-    @GetMapping("/products/pname/{Name}")
-    public ResponseEntity getAllNameStartingWith(@PathVariable String Name) {
-        System.out.println(Name);
-        List<product> product = productRepository.findByNameStartingWith(Name);
+    // // Select Products By ID
+    // @GetMapping("/products/pname/{Name}")
+    // public ResponseEntity getAllNameStartingWith(@PathVariable String name) {
+    //     System.out.println(name);
+    //     List<product> product = productRepository.findByNameStartingWith(name);
 
-        // check if FirstName have to in list
-        if (product.isEmpty()) {
-            // return error message 404
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Product Not Found");
+    //     // check if FirstName have to in list
+    //     if (product.isEmpty()) {
+    //         // return error message 404
+    //         return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Product Not Found");
 
-        }
+    //     }
 
-        return ResponseEntity.ok(product);
-    }
+    //     return ResponseEntity.ok(product);
+    // }
 
-    // Create new Product
+    // Create new Product*****
     @PostMapping("/products")
     public ResponseEntity<String> createProduct(@RequestBody product product) {
 
@@ -76,19 +77,17 @@ public class productController {
     // update Products
     @PutMapping("/products")
     public ResponseEntity<String> updateProduct( @RequestBody product product) {
-
         //Can't find id to Update
         if(!productRepository.existsById(product.getId())){
             return ResponseEntity.status(HttpStatus.CONFLICT).body("product id already exists");
         }
-
         // update Products
         productRepository.save(product);
 
         // return success message
         return ResponseEntity.ok("product updated");
     }
-    // Delete Products
+    // Delete Products*****
     @DeleteMapping("/products/{id}")
     public ResponseEntity<String> deleteProduct(@PathVariable long ID) {
 

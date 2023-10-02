@@ -1,4 +1,4 @@
-package product.service.domain;
+package product.service;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
