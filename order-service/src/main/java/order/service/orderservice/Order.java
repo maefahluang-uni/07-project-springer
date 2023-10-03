@@ -9,6 +9,8 @@ public class Order {
 
 
     Long id;
+
+    ///relationship between CustId and Order
     Long cusId;
     LocalDate orderDate;
     double  totalPrice;
