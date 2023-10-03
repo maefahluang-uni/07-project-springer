@@ -1,35 +1,32 @@
-package user.service.userservice;
+package product.service;
 
 import javax.persistence.*;
 
-@Entity
-@Table(name = "users")
-public class User {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
+public class UserDTO {
+
+    
+
     private Long id;
 
-    @Column(name="username")
     private String username;
-    @Column(name="password")
+
     private String password;
 
-    @Column(name="fname")
     private String firstname;
 
-    @Column(name="lname")
     private String lastname;
 
-    @Column(name="email")
     private String email;
 
-    @Column(name="pnumber")
     private String phone;
 
-    public User() {
+    public UserDTO() {
+
+
     }
 
-    public User(Long id, String username, String password, String firstname, String lastname, String email,
+    public UserDTO(Long id, String username, String password, String firstname, String lastname, String email,
             String phone) {
         this.id = id;
         this.username = username;

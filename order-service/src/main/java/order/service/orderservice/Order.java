@@ -3,6 +3,9 @@ package order.service.orderservice;
 import java.time.LocalDate;
 
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+
+// import org.apache.tomcat.jni.User;
 
 @Entity
 public class Order {
@@ -11,7 +14,11 @@ public class Order {
     Long id;
 
     ///relationship between CustId and Order
-    Long cusId;
+
+    @OneToMany
+    private UserDTO cusId; //FK
+
+
     LocalDate orderDate;
     double  totalPrice;
     Long quantity;
@@ -20,7 +27,7 @@ public class Order {
     
     }
 
-    public Order(Long id, Long cusId, LocalDate orderDate, double totalPrice, Long quantity) {
+    public Order(Long id, UserDTO cusId, LocalDate orderDate, double totalPrice, Long quantity) {
         this.id = id;
         this.cusId = cusId;
         this.orderDate = orderDate;
@@ -36,11 +43,11 @@ public class Order {
         this.id = id;
     }
 
-    public Long getCusId() {
+    public UserDTO getCusId() {
         return cusId;
     }
 
-    public void setCusId(Long cusId) {
+    public void setCusId(UserDTO cusId) {
         this.cusId = cusId;
     }
 
