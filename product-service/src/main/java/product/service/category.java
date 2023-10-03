@@ -9,8 +9,8 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table(name = "categoty")
-public class categoty {
+@Table(name = "catagory")
+public class category {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long ID;

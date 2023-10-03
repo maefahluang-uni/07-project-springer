@@ -33,8 +33,8 @@ public class product {
 
     // @Column(name ="catagoty")
     @ManyToOne(cascade = CascadeType.MERGE)
-    @JoinColumn(name = "Categ_id", referencedColumnName = "id")
-    private categoty Categoty;
+    @JoinColumn(name = "categ_id", referencedColumnName = "ID")
+    private category Category;
 
     @Column(name = "brand")
     private String Brand;
@@ -43,13 +43,13 @@ public class product {
 
     }
     //constructors 
-    public product(long ID, String Name, String Discription, long Price, long Stock, categoty Categoty, String Brand) {
+    public product(long ID, String Name, String Discription, long Price, long Stock, category Category, String Brand) {
         this.ID = ID;
         this.Name = Name;
         this.Discription = Discription;
         this.Price = Price;
         this.Stock = Stock;
-        this.Categoty = Categoty;
+        this.Category = Category;
         this.Brand = Brand;
     }
     public long getId() {
@@ -82,11 +82,11 @@ public class product {
     public void setStock(long Stock) {
         this.Stock = Stock;
     }
-    public categoty getCategoty() {
-        return Categoty;
+    public category getCategory() {
+        return Category;
     }
-    public void setCategoty(categoty categoty) {
-        this.Categoty = categoty;
+    public void setCategory(category category) {
+        this.Category = category;
     }
     public String getBrand() {
         return Brand;

@@ -3,6 +3,11 @@ package product.service;
 import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
+import javax.persistence.EntityManager;
+
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,13 +21,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 
-import product.service.productRepository;
-
 @RestController
 public class productController {
 
     @Autowired
-    private productRepository productRepository;
+    private  productRepository productRepository;
     // Create hashmap for Product
     
 
@@ -33,7 +36,7 @@ public class productController {
     }
 
     // Select Products By ID****
-    @GetMapping("/products/{id}")
+    @GetMapping("/products/{ID}")
     public ResponseEntity getAllProductById(@PathVariable long ID) {
         Optional<product> optProduct = productRepository.findById(ID);
 
@@ -46,22 +49,6 @@ public class productController {
         product emp = optProduct.get();
         return ResponseEntity.ok(emp);
     }
-
-    // // Select Products By ID
-    // @GetMapping("/products/pname/{Name}")
-    // public ResponseEntity getAllNameStartingWith(@PathVariable String name) {
-    //     System.out.println(name);
-    //     List<product> product = productRepository.findByNameStartingWith(name);
-
-    //     // check if FirstName have to in list
-    //     if (product.isEmpty()) {
-    //         // return error message 404
-    //         return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Product Not Found");
-
-    //     }
-
-    //     return ResponseEntity.ok(product);
-    // }
 
     // Create new Product*****
     @PostMapping("/products")
@@ -88,7 +75,7 @@ public class productController {
         return ResponseEntity.ok("product updated");
     }
     // Delete Products*****
-    @DeleteMapping("/products/{id}")
+    @DeleteMapping("/products/{ID}")
     public ResponseEntity<String> deleteProduct(@PathVariable long ID) {
 
         //Can't find id to delete
