@@ -1,5 +1,6 @@
 package product.service;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,6 +15,7 @@ public class categoty {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long ID;
     
+    @Column(name="name")
     private String Name;
 
 
