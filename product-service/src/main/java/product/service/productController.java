@@ -1,13 +1,7 @@
 package product.service;
 
 import java.util.Collection;
-import java.util.List;
 import java.util.Optional;
-import javax.persistence.EntityManager;
-
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

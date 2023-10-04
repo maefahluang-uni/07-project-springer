@@ -1,7 +1,7 @@
-package order.service.orderservice;
+// package order.service.orderservice;
 
-public class PaymentBean {
+// public class PaymentBean {
 
     
     
-}
+// }

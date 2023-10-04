@@ -1,34 +1,41 @@
-package product.service;
+package user.service.user;
 
 import javax.persistence.*;
 
+@Entity
+@Table(name = "users")
+public class User {
 
-public class UserDTO {
-
-    
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @Column(name="username")
     private String username;
-
+    @Column(name="password")
     private String password;
 
+    @Column(name="fname")
     private String firstname;
 
+    @Column(name="lname")
     private String lastname;
 
+    @Column(name="email")
     private String email;
 
+    @Column(name="pnumber")
     private String phone;
 
-    private int port;
+    // @Transient
+    // private int port;
 
-    public UserDTO() {
 
 
+    public User() {
     }
 
-    public UserDTO(Long id, String username, String password, String firstname, String lastname, String email,
+    public User(Long id, String username, String password, String firstname, String lastname, String email,
             String phone) {
         this.id = id;
         this.username = username;
@@ -39,6 +46,12 @@ public class UserDTO {
         this.phone = phone;
     }
 
+    //     public int getPort() {
+    //     return port;
+    // }
+    // public void setPort(int port) {
+    //     this.port = port;
+    // }
     public Long getId() {
         return id;
     }
@@ -94,12 +107,7 @@ public class UserDTO {
     public void setPhone(String phone) {
         this.phone = phone;
     }
-    public int getPort() {
-        return port;
-    }
-    public void setPort(int port) {
-        this.port = port;
-    }
 
     // Getters and setters
 }
+

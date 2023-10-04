@@ -2,7 +2,12 @@ package order.service.orderservice;
 
 import java.time.LocalDate;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
 // import org.apache.tomcat.jni.User;
@@ -10,30 +15,41 @@ import javax.persistence.OneToMany;
 @Entity
 public class Order {
 
-
+    @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
     Long id;
 
     ///relationship between CustId and Order
 
-    @OneToMany
-    private UserDTO cusId; //FK
+    // @OneToMany(cascade = CascadeType.MERGE)
+    // @JoinColumn(name = "user_id", referencedColumnName = "id")
+    // private UserDTO cusId; //FK
 
 
     LocalDate orderDate;
-    double  totalPrice;
+    Double totalPrice;
+    
     Long quantity;
+
+    String user ;
+    String product;
     
     public Order() {
     
     }
 
-    public Order(Long id, UserDTO cusId, LocalDate orderDate, double totalPrice, Long quantity) {
+
+   public Order(Long id, LocalDate orderDate, double totalPrice, Long quantity, String user, String product) {
+    super();
         this.id = id;
-        this.cusId = cusId;
         this.orderDate = orderDate;
         this.totalPrice = totalPrice;
         this.quantity = quantity;
+        this.user = user;
+        this.product = product;
     }
+
+
 
     public Long getId() {
         return id;
@@ -43,13 +59,13 @@ public class Order {
         this.id = id;
     }
 
-    public UserDTO getCusId() {
-        return cusId;
-    }
+    // public UserDTO getCusId() {
+    //     return cusId;
+    // }
 
-    public void setCusId(UserDTO cusId) {
-        this.cusId = cusId;
-    }
+    // public void setCusId(UserDTO cusId) {
+    //     this.cusId = cusId;
+    // }
 
     public LocalDate getOrderDate() {
         return orderDate;
@@ -74,6 +90,34 @@ public class Order {
     public void setQuantity(Long quantity) {
         this.quantity = quantity;
     }
+
+
+
+    public String getUser() {
+        return user;
+    }
+
+
+
+    public void setUser(String user) {
+        this.user = user;
+    }
+
+
+
+    public String getProduct() {
+        return product;
+    }
+
+
+
+    public void setProduct(String product) {
+        this.product = product;
+    }
+
+
+
+  
 
 
     

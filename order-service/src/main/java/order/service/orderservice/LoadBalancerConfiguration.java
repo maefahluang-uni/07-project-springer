@@ -5,10 +5,10 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-public
+
 
 @Configuration
-class LoadBalancerConfiguration {
+public class LoadBalancerConfiguration {
  
 
     @Bean
@@ -17,7 +17,7 @@ class LoadBalancerConfiguration {
         {
         
         	System.out.println("Configuring Load balancer to prefer same instance");
-		return ServiceInstanceListSupplier.builder().withBlockingDiscoveryClient()
+		    return ServiceInstanceListSupplier.builder().withBlockingDiscoveryClient()
 				.build(context);
         
         }

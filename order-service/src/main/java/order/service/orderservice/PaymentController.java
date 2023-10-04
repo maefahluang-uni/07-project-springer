@@ -1,8 +1,8 @@
-package order.service.orderservice;
+// package order.service.orderservice;
 
-import org.springframework.web.bind.annotation.RestController;
+// import org.springframework.web.bind.annotation.RestController;
 
-@RestController
-public class PaymentController {
+// @RestController
+// public class PaymentController {
     
-}
+// }
