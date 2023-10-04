@@ -10,7 +10,7 @@ import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @SpringBootApplication
-@EntityScan("product.service;")
+@EntityScan("product.service")
 public class OrderServiceApplication {
 
 	public static void main(String[] args) {

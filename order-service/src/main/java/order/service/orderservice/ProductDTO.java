@@ -2,7 +2,7 @@ package order.service.orderservice;
 
 public class ProductDTO {
     
- private long ID;
+    private long ID;
 
     private String Name ;
 
@@ -12,14 +12,10 @@ public class ProductDTO {
 
     private long Stock;
 
-
     String category;
 
-  
     private String Brand;
 
-
-    
     //constructors 
     ProductDTO(){
 

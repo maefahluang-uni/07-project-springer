@@ -1,5 +1,6 @@
 package order.service.orderservice;
 
+
 import org.springframework.http.HttpStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -15,13 +16,12 @@ public class OrderController {
   private ProductProxy productProxy;
  
   // add service to greet user by id
-  @RequestMapping("/order/{id}")
-  public ResponseEntity<String> orderId(@PathVariable Long id) {
+  @GetMapping("/order")
+  public ResponseEntity<String> orderId() {
       // call user-service to get user by id
-      ProductDTO productDTO= productProxy.getProduct(id);
-
+      ProductDTO productDTO= productProxy.getallProduct();
       // return hello with username
-      return new ResponseEntity<String>("product"+productDTO.getNameProduct(), HttpStatus.OK);
+      return new ResponseEntity<String>("product"+productDTO, HttpStatus.OK);
 
   }
 

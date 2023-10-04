@@ -2,6 +2,7 @@ package order.service.orderservice;
 
 import javax.persistence.Entity;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.loadbalancer.annotation.LoadBalancerClient;
@@ -14,13 +15,17 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 @FeignClient(name = "product-service")
 @LoadBalancerClient(name = "product-service", configuration = LoadBalancerConfiguration.class)
-@EntityScan(basePackages = "product.service")
+// @EntityScan(basePackages = "product.service")
+@EnableDiscoveryClient
 public interface ProductProxy { 
     
-
     @GetMapping("/products/{ID}")
-    public ProductDTO getProduct(@PathVariable long pid);
+    public ProductDTO  getProduct(@PathVariable long pid);
 
+    @GetMapping("/products")
+    public ProductDTO getallProduct();
+    
+    
 
     
 }

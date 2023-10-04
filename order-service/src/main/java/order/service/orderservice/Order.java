@@ -17,7 +17,7 @@ public class Order {
 
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    Long id;
+    private Long id;
 
     ///relationship between CustId and Order
 
@@ -26,26 +26,26 @@ public class Order {
     // private UserDTO cusId; //FK
 
 
-    LocalDate orderDate;
-    Double totalPrice;
+    private LocalDate orderDate;
+    private Double totalPrice;
     
-    Long quantity;
+    private Long quantity;
 
-    String user ;
-    String product;
+    // String user ;
+    private String product;
     
     public Order() {
     
     }
 
 
-   public Order(Long id, LocalDate orderDate, double totalPrice, Long quantity, String user, String product) {
+   public Order(Long id, LocalDate orderDate, double totalPrice, Long quantity, String product) {
     super();
         this.id = id;
         this.orderDate = orderDate;
         this.totalPrice = totalPrice;
         this.quantity = quantity;
-        this.user = user;
+        // this.user = user;
         this.product = product;
     }
 
@@ -93,15 +93,15 @@ public class Order {
 
 
 
-    public String getUser() {
-        return user;
-    }
+    // public String getUser() {
+    //     return user;
+    // }
 
 
 
-    public void setUser(String user) {
-        this.user = user;
-    }
+    // public void setUser(String user) {
+    //     this.user = user;
+    // }
 
 
 
