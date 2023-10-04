@@ -19,7 +19,7 @@ public interface ProductProxy {
     
 
     @GetMapping("/products/{ID}")
-    public ProductDTO geProduct(@PathVariable long pid);
+    public ProductDTO getProduct(@PathVariable long pid);
 
 
     

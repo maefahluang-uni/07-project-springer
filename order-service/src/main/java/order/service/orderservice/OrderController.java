@@ -18,7 +18,7 @@ public class OrderController {
   @RequestMapping("/order/{id}")
   public ResponseEntity<String> orderId(@PathVariable Long id) {
       // call user-service to get user by id
-      ProductDTO productDTO= productProxy.geProduct(id);
+      ProductDTO productDTO= productProxy.getProduct(id);
 
       // return hello with username
       return new ResponseEntity<String>("product"+productDTO.getNameProduct(), HttpStatus.OK);
