@@ -1,4 +1,4 @@
-package order.service.orderservice;
+package loadbalancer.service.loadbalancerservice;
 
 import org.springframework.cloud.loadbalancer.core.ServiceInstanceListSupplier;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -15,4 +15,3 @@ public class LoadBalancerConfiguration {
                 .build(context);
     }
 }
-

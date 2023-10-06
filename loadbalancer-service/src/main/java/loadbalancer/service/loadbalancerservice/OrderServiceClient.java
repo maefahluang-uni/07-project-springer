@@ -1,4 +1,4 @@
-package order.service.orderservice;
+package loadbalancer.service.loadbalancerservice;
 
 import javax.persistence.Entity;
 
@@ -9,21 +9,20 @@ import org.springframework.cloud.loadbalancer.annotation.LoadBalancerClient;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-import product.service.productDTO;
+import product.service.product;
 
 @FeignClient(name = "product-service")
 @LoadBalancerClient(name = "product-service", configuration = LoadBalancerConfiguration.class)
 @EntityScan(basePackages = "product-service.product")
-public interface ProductProxy {
+public interface OrderServiceClient {
 
-    @PostMapping("/orders")
-    ResponseEntity<String> createOrder(@RequestBody productDTO productDTO);
-    
-    
+    @PostMapping("/products")
+    ResponseEntity<String> createProduct(@RequestBody product product);
 
-    
+
+
+
 }
