@@ -10,20 +10,18 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
+import product.service.productDTO;
 
 @FeignClient(name = "product-service")
 @LoadBalancerClient(name = "product-service", configuration = LoadBalancerConfiguration.class)
-// @EntityScan(basePackages = "product.service")
-@EnableDiscoveryClient
-public interface ProductProxy { 
-    
-    @GetMapping("/products/{ID}")
-    public ProductDTO  getProduct(@PathVariable long pid);
+@EntityScan(basePackages = "product-service.product")
+public interface ProductProxy {
 
-    @GetMapping("/products")
-    public ProductDTO getallProduct();
+    @PostMapping("/orders")
+    ResponseEntity<String> createOrder(@RequestBody productDTO productDTO);
     
     
 

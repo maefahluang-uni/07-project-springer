@@ -8,16 +8,21 @@
 		<version>2.5.0</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>order.service</groupId>
-	<artifactId>order-service</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>order-service</name>
-	<description>Demo project for Spring Boot</description>
+		<groupId>order.service</groupId>
+		<artifactId>order-service</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+		<name>order-service</name>
+		<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>11</java.version>
 		<spring-cloud.version>2020.0.3</spring-cloud.version>
 	</properties>
 	<dependencies>
+		<dependency>
+			<groupId>product.service</groupId>
+			<artifactId>product-service</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
@@ -52,7 +57,9 @@
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
 		</dependency>
+		
 	</dependencies>
+
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
