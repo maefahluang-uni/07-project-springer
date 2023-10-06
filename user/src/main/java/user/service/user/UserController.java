@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
+import java.util.Optional;
 
 
 @RestController
@@ -51,4 +52,16 @@ return userRepository.findAll();
         userService.saveUser(user);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
+
+
+    @GetMapping("/users/{userId}")
+public ResponseEntity getUserById(@PathVariable long userId) {
+User user = userRepository.getById(userId);
+ if (user != null) {
+            return new ResponseEntity<>(user, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
 }
+    }
+
