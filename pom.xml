@@ -22,7 +22,7 @@
 
     <modules>
         <module>eureka-naming-server</module>
-        <module>user</module>
+        <module>user-service</module>
         <module>product-service</module>
         <module>pubsub-consumer</module>
         <module>pubsub-producer</module>
