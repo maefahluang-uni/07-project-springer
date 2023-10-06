@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Products</title>
+    <style>
+        /* Add CSS styles for your page here */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            text-align: center;
+        }
+        img {
+            max-width: 20%;
+            height: auto;
+        }
+       
+        
+    </style>
+</head>
+<body>
+    <h1>All Products</h1>
+
+    <a href="/web-front/src/main/webapp/addproduct.html">Add Product</a>
+
+    <div id="productList"></div>
+
+    <script>
+        // Assuming you have JavaScript to fetch product data from the server.
+        // Example:
+        fetch("http://localhost:8000/products")
+            .then(response => response.json())
+            .then(data => {
+                const productListDiv = document.getElementById("productList");
+
+                data.forEach(product => {
+                    const productElement = document.createElement("div");
+                    productElement.innerHTML = `
+                        <h2>${product.nameProduct}</h2>
+                        
+                        <img src="images/p1.png" alt="รูปภาพสินค้า">
+                    `;
+                    productListDiv.appendChild(productElement);
+                });
+            })
+            .catch(error => {
+                console.error("Error:", error);
+            });
+    </script>
+</body> 
+</html>
+
+                        <!-- <p>Description: ${product.discription}</p>
+                        <p>Price: ${product.price}</p>
+                        <p>Stock: ${product.stock}</p>
+                        <p>Category: ${product.category.id}</p>
+                        <p>Brand: ${product.brand}</p> -->

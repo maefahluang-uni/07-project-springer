@@ -52,6 +52,12 @@
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
 		</dependency>
+		<!-- ... อื่น ๆ ... -->
+    <dependency>
+        <groupId>org.hibernate</groupId>
+        <artifactId>hibernate-core</artifactId>
+        <version>5.5.6.Final</version> <!-- หรือเวอร์ชันล่าสุด -->
+    </dependency>
 	</dependencies>
 	<dependencyManagement>
 		<dependencies>
