@@ -27,9 +27,9 @@ public class TransactionGenerator implements Runnable {
 			int transactionType = ThreadLocalRandom.current().nextInt(0, 2);
 			int transactionAmount = ThreadLocalRandom.current().nextInt(50, 100001);
 			Transaction transaction = new Transaction(TransactionType.values()[transactionType], transactionAmount);
-			System.out.println(interrupted + " Transaction created " + transactionType + " - " + transactionAmount);
+			System.out.println(interrupted + " Payments " + transactionType + " - " + transactionAmount);
 
-			kafkaTemplate.send("banktrans", transaction);
+			kafkaTemplate.send("payments", transaction);
 
 			try {
 				// wait for 3 seconds before generating a new transaction

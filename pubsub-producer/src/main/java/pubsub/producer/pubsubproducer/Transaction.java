@@ -2,9 +2,7 @@ package pubsub.producer.pubsubproducer;
 
 class Transaction {
 	// Enumerated type to represent transaction types.
-	public enum TransactionType {
-		Deposit, Withdraw
-	};
+	public enum TransactionType {Success, Fail};
 
 	public TransactionType type;
 	public int amount;
