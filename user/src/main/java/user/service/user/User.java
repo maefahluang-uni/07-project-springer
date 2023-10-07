@@ -10,11 +10,6 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name="username")
-    private String username;
-    @Column(name="password")
-    private String password;
-
     @Column(name="fname")
     private String firstname;
 
@@ -30,21 +25,23 @@ public class User {
     // @Transient
     // private int port;
 
-
+    @OneToOne(cascade = CascadeType.PERSIST) //add เข้าไปใหม่ //2 entity ส่งข้อมูลไปพร้อมกัน
+    @JoinColumn(name="account_id", referencedColumnName="id")
+    private Account account;
 
     public User() {
     }
 
-    public User(Long id, String username, String password, String firstname, String lastname, String email,
-            String phone) {
+  
+    public User(Long id, String firstname, String lastname, String email, String phone, Account account) {
         this.id = id;
-        this.username = username;
-        this.password = password;
         this.firstname = firstname;
         this.lastname = lastname;
         this.email = email;
         this.phone = phone;
+        this.account = account;
     }
+
 
     //     public int getPort() {
     //     return port;
@@ -60,21 +57,7 @@ public class User {
         this.id = id;
     }
 
-    public String getUsername() {
-        return username;
-    }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
 
     public String getFirstname() {
         return firstname;
@@ -106,6 +89,16 @@ public class User {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+
+    public Account getAccount() {
+        return account;
+    }
+
+
+    public void setAccount(Account account) {
+        this.account = account;
     }
 
     // Getters and setters

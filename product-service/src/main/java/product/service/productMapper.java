@@ -9,5 +9,8 @@ import org.mapstruct.NullValuePropertyMappingStrategy;
 public interface productMapper {
     
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
-    void updateUserFromDTO(productDTO productDTO, @MappingTarget product product);
+    void updateProductFromDTO(productDTO productDTO, @MappingTarget product product);
 }
+
+
+
