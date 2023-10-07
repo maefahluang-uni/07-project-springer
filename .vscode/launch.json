@@ -1,0 +1,66 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "EurekaNamingServerApplication",
+            "request": "launch",
+            "mainClass": "eureka.naming.server.eurekanamingserver.EurekaNamingServerApplication",
+            "projectName": "lab-microservice-eureka-naming-server"
+        },
+    
+        {
+            "type": "java",
+            "name": "LoadbalancerServiceApplication",
+            "request": "launch",
+            "mainClass": "loadbalancer.service.loadbalancerservice.LoadbalancerServiceApplication",
+            "projectName": "loadbalancer-service"
+        },
+        {
+            "type": "java",
+            "name": "LoadbalancerServiceApplication2",
+            "request": "launch",
+
+    
+            "mainClass": "loadbalancer.service.loadbalancerservice.LoadbalancerServiceApplication",
+            "projectName": "loadbalancer-service"
+        },
+        {
+            "type": "java",
+            "name": "ProductServiceApplication",
+            "request": "launch",
+            "mainClass": "product.service.ProductServiceApplication",
+            "projectName": "product-service"
+        },
+        {
+            "type": "java",
+            "name": "PubsubConsumerApplication",
+            "request": "launch",
+            "mainClass": "pubsub.consumer.pubsubconsumer.PubsubConsumerApplication",
+            "projectName": "pubsub-consumer"
+        },
+        {
+            "type": "java",
+            "name": "PubsubProducerApplication",
+            "request": "launch",
+            "mainClass": "pubsub.producer.pubsubproducer.PubsubProducerApplication",
+            "projectName": "pubsub-producer"
+        },
+        {
+            "type": "java",
+            "name": "UserApplication",
+            "request": "launch",
+            "mainClass": "user.service.user.UserApplication",
+            "projectName": "user"
+        }
+    ]
+}
