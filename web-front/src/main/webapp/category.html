@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Category List</title>
+
+    <style>
+      /* Add CSS styles for your page here */
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #000000;
+        color: #ffffff;
+        margin: 0%;
+      }
+      /* ตั้งค่าขนาดและตำแหน่งของหัวข้อ */
+    h1 {
+        font-size: 15px;
+        margin-left: 50px;
+        max-width: 300px;
+        position: absolute;
+    }
+      nav {
+        border-top: 1px solid #ffffff;
+        border-bottom: 1px solid #ffffff;
+        width: 100%;
+        padding:5px;
+        height: 50px;
+        margin-bottom: 1%;
+        
+    }
+
+      /* กำหนดรูปแบบของตาราง */
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      /* กำหนดรูปแบบของหัวตาราง */
+      th,
+      td {
+        padding: 8px;
+        text-align: left;
+        padding: 20px;
+      }
+
+      th {
+        background-color: #000000;
+      }
+      a {
+        font-size: 15px;
+        margin-left: 1500px;
+        margin-top: 15px;
+        max-width: 300px;
+        position: absolute;
+        color: #ffffff;
+        text-decoration: solid;
+    }
+    
+    h2 {
+        font-size: 40px;
+    }
+    p2{
+        position: absolute;
+        margin-top: 80px;
+        font-size:25px;
+        text-decoration: solid;
+    }
+    p2:hover {
+        color: #ff0000;
+        cursor: default;
+    }
+    h3 {
+        margin: 20px;
+    }
+  
+      
+    </style>
+  </head>
+
+  <body>
+    <nav>
+      <a
+        href="/web-front/src/main/webapp/products.html"
+        style="margin-top: 15px; margin-left: 50px"
+        >All Product page</a
+      >
+      <a href="/web-front/src/main/webapp/category.html" style="margin-top: 15px;margin-left: 200px;">Category</a>
+      <a href="/web-front/src/main/webapp/editCategory.html">Edit Category</a>
+    </nav>
+    <h3>Category List</h3>
+    <div id="categoryList"></div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "http://localhost:8000/category", true);
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState === XMLHttpRequest.DONE) {
+            if (xhr.status === 200) {
+              var categories = JSON.parse(xhr.responseText);
+              displayCategories(categories);
+            } else {
+              alert("มีข้อผิดพลาดในการดึงข้อมูล Category");
+            }
+          }
+        };
+        xhr.send();
+
+        function displayCategories(categories) {
+          var table =
+            '<table border="1">' +
+            "<thead>" +
+            "<tr>" +
+            "<th>ID</th>" +
+            "<th>Name</th>" +
+            "</tr>" +
+            "</thead>" +
+            "<tbody>";
+
+          for (var i = 0; i < categories.length; i++) {
+            table +=
+              "<tr>" +
+              "<td>" +
+              categories[i].id +
+              "</td>" +
+              "<td>" +
+              categories[i].name +
+              "</td>" +
+              "</tr>";
+          }
+
+          table += "</tbody></table>";
+          document.getElementById("categoryList").innerHTML = table;
+        }
+      });
+    </script>
+  </body>
+</html>

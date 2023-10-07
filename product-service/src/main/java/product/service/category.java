@@ -18,7 +18,15 @@ public class category {
     @Column(name="name")
     private String Name;
 
+    public category() {
+        
+    }
 
+
+    public category(long iD, String name) {
+        ID = iD;
+        Name = name;
+    }
     public long getId() {
         return ID;
     }

@@ -1,4 +1,4 @@
-package user.service.user;
+package user.service.userservice;
 
 import javax.persistence.*;
 
