@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add/Delete Category</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #000000;
+            color: #ffffff;
+            margin: 0%;
+          }
+        /* ตั้งขนาดและตำแหน่งของหัวข้อ */
+        h1 {
+            font-size: 15px;
+            margin-left: 50px;
+            max-width: 300px;
+            position: absolute;
+        }
+          nav {
+            border-top: 1px solid #ffffff;
+            border-bottom: 1px solid #ffffff;
+            width: 100%;
+            padding:5px;
+            height: 50px;
+            margin-bottom: 1%;
+            
+        }
+        
+        /* กำหนดรูปแบบของฟอร์ม */
+        form {
+            margin-bottom: 20px;
+        }
+        
+        /* กำหนดขนาดและตำแหน่งของ label และ input */
+        label,
+        input {
+            display: block;
+            margin-bottom: 10px;
+        }
+        
+        /* กำหนดขนาด input */
+        input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            
+        }
+        
+        /* กำหนดสีขอบเมื่อ input ถูกเลือก */
+        input:focus {
+            border: 1px solid #007bff; /* เปลี่ยนสีเมื่อได้รับการโฟกัส */
+        }
+        
+        /* กำหนดขนาดและตำแหน่งของปุ่ม */
+        input[type="submit"] {
+            color: #ffffff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            margin-left: 8px;
+        }
+        
+        /* กำหนดสีขอบเมื่อปุ่มได้รับการโฟกัส */
+        input[type="submit"]:focus {
+            outline: none;
+        }
+        
+        /* กำหนดสีขอบเมื่อปุ่มถูกคลิก */
+        input[type="submit"]:active {
+            background-color: #0056b3;
+        }
+        
+        /* กำหนดสีขอบและพื้นหลังของ div */
+        div {
+            border: 1px solid #ccc;
+            background-color: #ffffff;
+            padding: 20px;
+        }
+        
+        /* กำหนดรูปแบบของตาราง */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        /* กำหนดรูปแบบของหัวตาราง */
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        
+        th {
+            background-color: #f2f2f2;
+        }
+        a {
+            font-size: 15px;
+            margin-left: 1500px;
+            margin-top: 15px;
+            max-width: 300px;
+            position: absolute;
+            color: #ffffff;
+            text-decoration: solid;
+        }
+        
+        h2 {
+            font-size: 40px;
+        }
+        p2{
+            position: absolute;
+            margin-top: 80px;
+            font-size:25px;
+            text-decoration: solid;
+        }
+        p2:hover {
+            color: #ff0000;
+            cursor: default;
+        }
+        h3 {
+            margin: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <a
+          href="/web-front/src/main/webapp/products.html"
+          style="margin-top: 15px; margin-left: 50px"
+          >All Product page</a
+        >
+        <a href="/web-front/src/main/webapp/category.html" style="margin-top: 15px;margin-left: 200px;">Category</a>
+        <a href="/web-front/src/main/webapp/editCategory.html">Edit Category</a>
+      </nav>
+    <h4>Add Category</h4>
+    <form id="addCategoryForm">
+        <label for="categoryName">Category Name:</label>
+        <input type="text" id="categoryName" name="categoryName" required /><br />
+        <input type="submit" value="Add Category" />
+    </form>
+
+    <h4 style="margin-top: 3%;">Delete Category</h4>
+    <form id="deleteCategoryForm">
+        <label for="categoryId">Category ID:</label>
+        <input type="number" id="categoryId" name="categoryId" required /><br />
+        <input type="submit" value="Delete Category" />
+    </form>
+
+    <script>
+        document.getElementById('addCategoryForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            var categoryName = document.getElementById('categoryName').value;
+        
+            // ทำการส่ง categoryName ไปยัง API ที่รองรับการเพิ่มหมวดหมู่
+            fetch('http://localhost:8000/category', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    name: categoryName
+                }),
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert(`Category "${categoryName}" added successfully!`);
+                } else {
+                    alert(`Failed to add category. Please check your input.`);
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        });
+
+        document.getElementById('deleteCategoryForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            var categoryId = document.getElementById('categoryId').value;
+        
+            // ทำการส่ง categoryId ไปยัง API ที่รองรับการลบหมวดหมู่
+            fetch(`http://localhost:8000/category/${categoryId}`, {
+                method: 'DELETE',
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert(`Category with ID ${categoryId} deleted successfully!`);
+                } else {
+                    alert(`Failed to delete category with ID ${categoryId}.`);
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        });
+        
+        
+    </script>
+</body>
+
+</html>
