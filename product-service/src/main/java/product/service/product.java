@@ -30,9 +30,9 @@ public class product {
     @Column(name="stock")
     private long Stock;
 
+
     @Column(name = "picurl")
     private String picurl;
-
 
     // @Column(name ="catagoty")
     @ManyToOne(cascade = CascadeType.MERGE)
@@ -49,19 +49,22 @@ public class product {
 
     }
     //constructors 
-    public product(long ID, String Name, String Discription, long Price, long Stock, category Category, String Brand, String picurl) {
-        this.ID = ID;
-        this.Name = Name;
-        this.Discription = Discription;
-        this.Price = Price;
-        this.Stock = Stock;
-        this.Category = Category;
-        this.Brand = Brand;
-        this.picurl = picurl;
-    }
+ 
     public long getId() {
         return ID;
     }
+    public product(long iD, String name, String discription, long price, long stock, String picurl, category category,
+            String brand) {
+        ID = iD;
+        Name = name;
+        Discription = discription;
+        Price = price;
+        Stock = stock;
+        this.picurl = picurl;
+        Category = category;
+        Brand = brand;
+    }
+
     public void setId(long ID) {
         this.ID = ID;
     }
@@ -101,11 +104,21 @@ public class product {
     public void setBrand(String Brand) {
         this.Brand = Brand;
     }
+
+    public String getName() {
+        return Name;
+    }
+
+    public void setName(String name) {
+        Name = name;
+    }
+
     public String getPicurl() {
         return picurl;
     }
-    
+
     public void setPicurl(String picurl) {
         this.picurl = picurl;
     }
+    
 }

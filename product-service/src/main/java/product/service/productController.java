@@ -1,15 +1,14 @@
 package product.service;
 
 import java.util.Collection;
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -25,12 +24,18 @@ public class productController {
     // Create hashmap for Product
     
 
+    @Autowired
+    private productMapper producstMapper;
+
+
+
+    
+
     // Select all Product
     @GetMapping("/products")
     public Collection<product> getallProduct() {
         return productRepository.findAll();
     }
-
 
     // Select Products By ID****
     @GetMapping("/products/{ID}")
@@ -86,5 +91,31 @@ public class productController {
         // return success message
         return ResponseEntity.ok("Product had Deleted");
     }
-    
+
+
+    @PatchMapping("/products/{id}")
+    public ResponseEntity<String> patchProduct(@PathVariable long id,
+    @RequestBody productDTO product){
+Optional<product> optProduct = productRepository.findById(id);
+
+if(!optProduct.isPresent()){
+    return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Product not found");
+}
+
+  //get employee from db
+product products = optProduct.get();
+
+
+  // update employee by using mapper from dto
+producstMapper.updateProductFromDTO(product, products);
+
+//save to db
+productRepository.save(products);
+
+return ResponseEntity.ok("Product updated");
+
+    }
+  
+
+
 }
